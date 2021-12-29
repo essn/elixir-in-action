@@ -19,6 +19,8 @@ defmodule Todo.MixProject do
   end
 
   defp deps do
-    []
+    [
+      {:poolboy, "~> 1.5"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
   end
 end
