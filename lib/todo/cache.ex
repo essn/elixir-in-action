@@ -23,4 +23,3 @@ defmodule Todo.Cache do
     DynamicSupervisor.start_child(__MODULE__, {Todo.Server, todo_list_name})
   end
 end
-
