@@ -2,7 +2,11 @@ defmodule Todo.Web do
   use Plug.Router
 
   def child_spec(_args) do
-    Plug.Adapters.Cowboy.child_spec(scheme: :http, options: [port: 5454], plug: __MODULE__)
+    Plug.Adapters.Cowboy.child_spec(
+      scheme: :http,
+      options: [port: Application.fetch_env!(:todo, :http_port)],
+      plug: __MODULE__
+    )
   end
 
   plug(:match)
