@@ -1,5 +1,6 @@
 defmodule Todo.Database do
   @db_folder "./persist"
+  @dialyzer {:nowarn_function, child_spec: 1}
 
   def child_spec(_) do
     File.mkdir_p!(@db_folder)
