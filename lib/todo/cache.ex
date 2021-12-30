@@ -4,6 +4,14 @@ defmodule Todo.Cache do
     DynamicSupervisor.start_link(name: __MODULE__, strategy: :one_for_one)
   end
 
+  def child_spec(_arg) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, []},
+      type: :supervisor
+    }
+  end
+
   def server_process(todo_list_name) do
     :rpc.call(node_for_list(todo_list_name), Todo.Cache, :server_process, [todo_list_name])
   end
